@@ -2,13 +2,17 @@ import { LayoutDashboard, LogIn, Menu, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie'
+import Footer from './Footer'
 
 export default function LandingLayout({ children }) {
   const [loggedIn, setLoggedIn] = useState(false)
   const [role, setRole] = useState("user")
+  const [cookies, setCookies] = useCookies(['tvb'])
 
   useEffect(() => {
-
+    if (cookies.tvb_rl === "user") { setLoggedIn(true); setRole("user") }
+    if (cookies.tvb_rl === "admin") { setLoggedIn(true); setRole("admin") }
   }, [])
 
   return(
@@ -47,6 +51,8 @@ export default function LandingLayout({ children }) {
         <div className='min-h-screen'>
           {children}
         </div>
+
+        <Footer />
       </div>
 
       <div className="drawer-side z-20">

@@ -1,24 +1,48 @@
+import travelBookAPI from "@/commons/TravelBookAPI";
 import { Lock, LockKeyhole, Mail, Phone, User2 } from "lucide-react";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useAlert } from "react-alert";
-
+import { useCookies } from 'react-cookie'
 
 export default function Login() {
   const alert = useAlert()
+  const router = useRouter()
+  const [cookies, setCookies] = useCookies(['tvb'])
 
   const [loginData, setLoginData] = useState({
-
+    email: "",
+    password: "",
   })
   const [registerData, setRegisterData] = useState({
 
   })
 
   async function Login() {
-    alert.show("hello")
+    try {
+      const response = await travelBookAPI.Login(loginData)
+      const body = await response.json()
+      if (response.status !== 200) {
+        alert.error(`Login failed: ${body.error}`)
+        return
+      }
+
+      alert.success("Login success")
+      setCookies("tvb_at", body.data.session, {path: "/"})
+      setCookies("tvb_rl", body.data.role, {path: "/"})
+      setCookies("tvb_nm", body.data.name, {path: "/"})
+      setCookies("tvb_em", body.data.email, {path: "/"})
+
+      router.push('/d/dashboard')
+    } catch (e) {
+
+      alert.error(`Login failed: ${e.message}`)
+      console.error(e)
+    }
   }
 
   async function Register() {
-    
+
   }
 
   return (
@@ -31,12 +55,12 @@ export default function Login() {
 
               <label className="input input-sm input-bordered flex items-center gap-2 mt-4">
                 <Mail size={16} />
-                <input type="text" className="grow" placeholder="Email" />
+                <input type="text" className="grow" placeholder="Email" value={loginData.email} onChange={(e)=>setLoginData({...loginData, "email": e.target.value})} />
               </label>
 
               <label className="input input-sm input-bordered flex items-center gap-2 mt-4">
                 <Lock size={16} />
-                <input type="password" className="grow" placeholder="Password" />
+                <input type="password" className="grow" placeholder="Password" value={loginData.password} onChange={(e)=>setLoginData({...loginData, "password": e.target.value})} />
               </label>
 
               <div className="flex justify-between items-center mt-4">

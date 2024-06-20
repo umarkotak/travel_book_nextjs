@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
+import { CookiesProvider } from 'react-cookie'
 
 export default function App({ Component, pageProps }) {
   const [layoutMode, setLayoutMode] = useState("LandingLayout")
@@ -28,28 +29,28 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <AlertProvider template={AlertTemplate} {...options}>
-        {
-          layoutMode === "LandingLayout" &&
-          <LandingLayout>
-            <Component {...pageProps} />
-          </LandingLayout>
-        }
-        {
-          layoutMode === "UserLayout" &&
-          <UserLayout>
-            <Component {...pageProps} />
-          </UserLayout>
-        }
-        {
-          layoutMode === "AdminLayout" &&
-          <AdminLayout>
-            <Component {...pageProps} />
-          </AdminLayout>
-        }
-
-        <Footer />
-      </AlertProvider>
+      <CookiesProvider defaultSetOptions={{ path: '/' }}>
+        <AlertProvider template={AlertTemplate} {...options}>
+          {
+            layoutMode === "LandingLayout" &&
+            <LandingLayout>
+              <Component {...pageProps} />
+            </LandingLayout>
+          }
+          {
+            layoutMode === "UserLayout" &&
+            <UserLayout>
+              <Component {...pageProps} />
+            </UserLayout>
+          }
+          {
+            layoutMode === "AdminLayout" &&
+            <AdminLayout>
+              <Component {...pageProps} />
+            </AdminLayout>
+          }
+        </AlertProvider>
+      </CookiesProvider>
     </>
   )
 }
