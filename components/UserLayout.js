@@ -79,9 +79,10 @@ export default function UserLayout({ children }) {
         <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200">
           {/* Sidebar content here */}
+          <li><Link href="/d/home"><HomeIcon size={14} /> Home</Link></li>
           <li><Link href="/d/camping_packets"><Tent size={14} /> Paket Camping</Link></li>
           <li><Link href="/d/my_booking"><ReceiptText size={14} /> Booking</Link></li>
-          <li><Link href="#" className='text-red-800' onClick={()=>Logout()}><LogOut size={14} /> Logout</Link></li>
+          <li><Link href="#" className='text-red-800' onClick={(e)=>Logout(e)}><LogOut size={14} /> Logout</Link></li>
         </ul>
       </div>
     </div>

@@ -18,7 +18,7 @@ export default function LandingLayout({ children }) {
     if (cookies.tvb_rl === "admin") { setLoggedIn(true); setRole("admin") }
 
     console.log("PATHNAME",pathName)
-    if (pathName === "/" || pathName === "") {
+    if (["", "/", "/login"].includes(pathName)) {
       setNavClass("z-20 w-full navbar bg-white bg-opacity-10 backdrop-blur-sm text-white")
     } else {
       setNavClass("z-20 w-full navbar bg-[#8ac16e]")
