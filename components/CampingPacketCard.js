@@ -7,6 +7,7 @@ import 'react-date-range/dist/theme/default.css'
 import { DateRange } from 'react-date-range';
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
+import utils from '@/commons/Utils'
 
 export default function CampingPacketCard(props) {
   var campingPacket = props.campingPacket
@@ -75,9 +76,9 @@ export default function CampingPacketCard(props) {
           </div>
 
           <div className='mt-4 flex items-center flex-wrap gap-4 text-sm md:text-md'>
-            <span className='font-bold'>Weekday: {campingPacket.weekday_price}</span>
+            <span className='font-bold'>Weekday: {utils.FormatMoney(campingPacket.weekday_price)}</span>
             <span>|</span>
-            <span className='font-bold'>Weekend: {campingPacket.weekend_price}</span>
+            <span className='font-bold'>Weekend: {utils.FormatMoney(campingPacket.weekend_price)}</span>
           </div>
         </div>
       </div>

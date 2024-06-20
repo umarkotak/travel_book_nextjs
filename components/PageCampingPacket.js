@@ -15,7 +15,6 @@ export default function PageCampingPacket() {
       slug: "drajih-glamping-camp",
       main_thumbnail: "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/glamp.png",
       thumbnails: [
-        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/bg-contact.jpeg",
         "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/5.png",
         "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/4.png",
         "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/1.png",
@@ -46,7 +45,6 @@ export default function PageCampingPacket() {
       slug: "drajih-dome-tent",
       main_thumbnail: "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.04-150x150.jpeg",
       thumbnails: [
-        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.04-150x150.jpeg",
         "https://d-rajihnaturecamp.com/wp-content/uploads/2024/05/dome-150x150.jpg",
         "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.23-150x150.jpeg",
         "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.01-150x150.jpeg",
@@ -70,6 +68,30 @@ export default function PageCampingPacket() {
       weekday_price: 350000,
       weekend_price: 450000,
       remaining_slot: 10,
+    },
+    {
+      slug: "drajih-camp-ground",
+      main_thumbnail: "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/2-1.png",
+      thumbnails: [
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/3-1.png",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/1-1.png",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-16.42.46.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-16.42.46-1.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.03.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/banner-03.jpeg",
+      ],
+      name: "Drajih Camp Ground",
+      description: "Camp Ground untuk kamu yang ingin mencoba di kavling area drajih nature camp, dengan membawa tenda dan peralatan sendiri untuk menambah pengalaman baru nge-camp kamu di D’Rajih Nature Camp.",
+      specs: [
+        {key: "pax", value: "1 Pax"},
+        {key: "toilet", value: "Toilet Bersama"},
+        {key: "park", value: "Parkir"},
+        {key: "bonfire", value: "Area Api Unggun"},
+      ],
+      facilitates: [],
+      weekday_price: 35000,
+      weekend_price: 35000,
+      remaining_slot: 1000,
     },
   ])
   const [bookingParams, setBookingParams] = useState({
