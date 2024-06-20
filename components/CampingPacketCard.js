@@ -12,6 +12,7 @@ export default function CampingPacketCard(props) {
   var campingPacket = props.campingPacket
 
   campingPacket = {
+    slug: "drajih-glamping-camp",
     main_thumbnail: "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/glamp.png",
     thumbnails: [
       "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/glamp.png",
@@ -41,6 +42,20 @@ export default function CampingPacketCard(props) {
     if (specKey === "park") { return(<ParkingSquare size={size} />) }
     if (specKey === "bonfire") { return(<FlameKindling size={size} />) }
     return(<Circle size={size} />)
+  }
+
+  function changeQuantity(val) {
+    var finalVal = parseInt(val) || 0
+    if (finalVal < 0) { finalVal = 0 }
+    if (finalVal > campingPacket.remaining_slot) { finalVal = campingPacket.remaining_slot }
+
+    var tmpPackets = props.bookingParams.packets
+    tmpPackets[campingPacket.slug] = finalVal
+
+    props.setBookingParams({
+      ...props.bookingParams,
+      packets: tmpPackets,
+    })
   }
 
   return(
@@ -81,13 +96,19 @@ export default function CampingPacketCard(props) {
       </div>
       <div className='flex justify-between items-center gap-4'>
         <div>
-          <span>Tersisa: {campingPacket.remaining_slot}</span>
+          <span>Tersisa: {campingPacket.remaining_slot - (props.bookingParams.packets[campingPacket.slug] || 0)} / {campingPacket.remaining_slot}</span>
         </div>
 
         <div className='flex items-center gap-2'>
           <button className='btn btn-xs btn-outline'><Minus size={12} /></button>
           <label className="input input-xs input-bordered flex items-center gap-2">
-            <input type="text" className="" placeholder="Jumlah"  />
+            <input
+              type="number"
+              className=""
+              placeholder="Jumlah"
+              onChange={(e) => changeQuantity(e.target.value)}
+              value={props.bookingParams.packets[campingPacket.slug]}
+            />
           </label>
           <button className='btn btn-xs btn-outline'><Plus size={12} /></button>
         </div>

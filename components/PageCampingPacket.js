@@ -10,6 +10,11 @@ import 'react-medium-image-zoom/dist/styles.css'
 import CampingPacketCard from './CampingPacketCard'
 
 export default function PageCampingPacket() {
+  const [bookingParams, setBookingParams] = useState({
+    date_start_wib: "",
+    date_end_wib: "",
+    packets: {},
+  })
   const [dateRange, setDateRange] = useState(
     [
       {
@@ -52,7 +57,12 @@ export default function PageCampingPacket() {
 
       <div className='flex flex-col gap-4 px-2 mt-6'>
         {[{}, {}, {}].map((campingPacket, idx) => (
-          <CampingPacketCard key={idx} campingPacket={campingPacket} />
+          <CampingPacketCard
+            key={idx}
+            campingPacket={campingPacket}
+            bookingParams={bookingParams}
+            setBookingParams={setBookingParams}
+          />
         ))}
       </div>
 
