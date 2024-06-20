@@ -1,4 +1,4 @@
-import { FlameKindling, Minus, ParkingSquare, Plus, Search, ShowerHead, Tent, Users } from 'lucide-react'
+import { FlameKindling, Minus, ParkingSquare, Plus, Search, ShoppingCart, ShowerHead, Tent, Users } from 'lucide-react'
 import Link from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -54,6 +54,22 @@ export default function PageCampingPacket() {
         {[{}, {}, {}].map((campingPacket, idx) => (
           <CampingPacketCard key={idx} campingPacket={campingPacket} />
         ))}
+      </div>
+
+      <div className="drawer drawer-end">
+        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content">
+          {/* Page content here */}
+          <label htmlFor="my-drawer-4" className="fixed bottom-8 right-8 drawer-button btn btn-sm btn-primary"><ShoppingCart size={14} /> Konfirmasi Booking</label>
+        </div>
+        <div className="drawer-side z-30">
+          <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+          <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+            {/* Sidebar content here */}
+            <li><a>Sidebar Item 1</a></li>
+            <li><a>Sidebar Item 2</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   )
