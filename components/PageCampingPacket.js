@@ -1,4 +1,4 @@
-import { FlameKindling, Minus, ParkingSquare, Plus, Search, ShoppingCart, ShowerHead, Tent, Users } from 'lucide-react'
+import { Check, FlameKindling, Minus, ParkingSquare, Plus, Search, ShoppingCart, ShowerHead, Tent, Users } from 'lucide-react'
 import Link from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -113,6 +113,10 @@ export default function PageCampingPacket() {
     setDateRange([item.selection])
   }
 
+  function proceedBooking() {
+    console.log("BOOKING", bookingParams)
+  }
+
   return(
     <div className='container max-w-3xl min-h-screen mx-auto py-6'>
       <div className='p-4 mx-2 bg-[#8ac16e] rounded-lg'>
@@ -156,11 +160,32 @@ export default function PageCampingPacket() {
         </div>
         <div className="drawer-side z-30">
           <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+          <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-            <li><a>Sidebar Item 1</a></li>
-            <li><a>Sidebar Item 2</a></li>
-          </ul>
+            <div>
+              {Object.keys(bookingParams.packets).filter((slug) => bookingParams.packets[slug] > 0).map((slug) => (
+                <div className='flex justify-between items-center text-md mb-2'>
+                  <div className='flex items-center'>
+                    <Zoom>
+                      <img
+                        className='h-12 w-12 object-cover rounded-lg overflow-hidden mr-2'
+                        src={campingList.filter((obj) => obj.slug === slug)[0].main_thumbnail}
+                      />
+                    </Zoom>
+                    <span>{campingList.filter((obj) => obj.slug === slug)[0].name}</span>
+                  </div>
+                  <span>{bookingParams.packets[slug]}x</span>
+                </div>
+              ))}
+            </div>
+
+            <div className='flex justify-end mt-8'>
+              <button
+                className='btn btn-sm btn-outline'
+                onClick={()=>proceedBooking()}
+              ><Check size={14} /> Lanjutkan</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

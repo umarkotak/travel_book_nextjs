@@ -97,7 +97,7 @@ export default function CampingPacketCard(props) {
               className=""
               placeholder="Jumlah"
               onChange={(e) => changeQuantity(e.target.value)}
-              value={props.bookingParams.packets[campingPacket.slug]}
+              value={props.bookingParams.packets[campingPacket.slug] || 0}
             />
           </label>
           {/* <button className='btn btn-xs btn-outline'><Plus size={12} /></button> */}
