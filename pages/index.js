@@ -42,7 +42,7 @@ export default function Home() {
               <img className="w-full" src={"/images/asset-01.jpg"} />
             </div>
 
-            <div>
+            <div className="px-2">
               <p className="text-[28px]">Selamat Datang di D'Rajih Nature Camp</p>
 
               <p className="mt-4 text-md">D’Rajih Nature Camp adalah tempat wisata glamping dengan view yang indah, bermalam yang tepat bagi Anda berlibur bersama keluarga. Nikmati segala fasilitas hiburan untuk Anda dan keluarga</p>

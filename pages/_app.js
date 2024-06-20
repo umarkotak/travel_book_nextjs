@@ -5,6 +5,8 @@ import UserLayout from "@/components/UserLayout";
 import "@/styles/globals.css";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
 
 export default function App({ Component, pageProps }) {
   const [layoutMode, setLayoutMode] = useState("LandingLayout")
@@ -18,28 +20,36 @@ export default function App({ Component, pageProps }) {
     else { setLayoutMode("LandingLayout") }
   }, [pathName])
 
+  const options = {
+    position: positions.BOTTOM_RIGHT,
+    transition: transitions.FADE,
+    timeout: 5000,
+  }
+
   return (
     <>
-      {
-        layoutMode === "LandingLayout" &&
-        <LandingLayout>
-          <Component {...pageProps} />
-        </LandingLayout>
-      }
-      {
-        layoutMode === "UserLayout" &&
-        <UserLayout>
-          <Component {...pageProps} />
-        </UserLayout>
-      }
-      {
-        layoutMode === "AdminLayout" &&
-        <AdminLayout>
-          <Component {...pageProps} />
-        </AdminLayout>
-      }
+      <AlertProvider template={AlertTemplate} {...options}>
+        {
+          layoutMode === "LandingLayout" &&
+          <LandingLayout>
+            <Component {...pageProps} />
+          </LandingLayout>
+        }
+        {
+          layoutMode === "UserLayout" &&
+          <UserLayout>
+            <Component {...pageProps} />
+          </UserLayout>
+        }
+        {
+          layoutMode === "AdminLayout" &&
+          <AdminLayout>
+            <Component {...pageProps} />
+          </AdminLayout>
+        }
 
-      <Footer />
+        <Footer />
+      </AlertProvider>
     </>
   )
 }

@@ -1,13 +1,25 @@
 import { Lock, LockKeyhole, Mail, Phone, User2 } from "lucide-react";
 import { useState } from "react";
+import { useAlert } from "react-alert";
+
 
 export default function Login() {
+  const alert = useAlert()
+
   const [loginData, setLoginData] = useState({
 
   })
   const [registerData, setRegisterData] = useState({
 
   })
+
+  async function Login() {
+    alert.show("hello")
+  }
+
+  async function Register() {
+    
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-sky-500 to-indigo-500 z-0 mt-[-70px]">
@@ -32,7 +44,7 @@ export default function Login() {
                   Forgot Password
                 </button>
 
-                <button className="btn btn-outline btn-sm">
+                <button className="btn btn-outline btn-sm" onClick={()=>Login()}>
                   Login
                 </button>
               </div>

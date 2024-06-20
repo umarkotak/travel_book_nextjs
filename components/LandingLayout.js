@@ -53,8 +53,14 @@ export default function LandingLayout({ children }) {
         <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200">
           {/* Sidebar content here */}
-          <li><a>Sidebar Item 1</a></li>
-          <li><a>Sidebar Item 2</a></li>
+          <li><Link href="/camping_packets">Paket Camping</Link></li>
+          <li><Link href="/about_us">Tentang Kami</Link></li>
+          <li><Link href="/gallery">Galeri</Link></li>
+          <li><Link href="/contact_us">Kontak Kami</Link></li>
+          <li><Link className='border' href="/contact_us"><Phone size={14} /> Tanya Admin</Link></li>
+          {!loggedIn && <li><Link href="/login"><LogIn size={14} /> Login</Link></li>}
+          {loggedIn && role==="user" && <li><Link href="/d/dashboard"><LayoutDashboard size={14} /> Dashboard</Link></li>}
+          {loggedIn && role==="admin" && <li><Link href="/a/dashboard"><LayoutDashboard size={14} /> Admin</Link></li>}
         </ul>
       </div>
     </div>
