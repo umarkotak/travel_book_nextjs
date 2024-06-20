@@ -33,7 +33,7 @@ export default function Login() {
       setCookies("tvb_nm", body.data.name, {path: "/"})
       setCookies("tvb_em", body.data.email, {path: "/"})
 
-      router.push('/d/dashboard')
+      router.push('/d/home')
     } catch (e) {
 
       alert.error(`Login failed: ${e.message}`)
