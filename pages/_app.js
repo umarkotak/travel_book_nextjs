@@ -1,4 +1,5 @@
 import AdminLayout from "@/components/AdminLayout";
+import Footer from "@/components/Footer";
 import LandingLayout from "@/components/LandingLayout";
 import UserLayout from "@/components/UserLayout";
 import "@/styles/globals.css";
@@ -37,6 +38,8 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </AdminLayout>
       }
+
+      <Footer />
     </>
   )
 }

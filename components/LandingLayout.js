@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 
 export default function LandingLayout({ children }) {
   const [loggedIn, setLoggedIn] = useState(false)
+  const [role, setRole] = useState("user")
 
   useEffect(() => {
 
@@ -36,13 +37,16 @@ export default function LandingLayout({ children }) {
               <li><Link href="/contact_us">Kontak Kami</Link></li>
               <li><Link className='border' href="/contact_us"><Phone size={14} /> Tanya Admin</Link></li>
               {!loggedIn && <li><Link href="/login"><LogIn size={14} /> Login</Link></li>}
-              {loggedIn && <li><Link href="/login"><LayoutDashboard size={14} /> Dashboard</Link></li>}
+              {loggedIn && role==="user" && <li><Link href="/d/dashboard"><LayoutDashboard size={14} /> Dashboard</Link></li>}
+              {loggedIn && role==="admin" && <li><Link href="/a/dashboard"><LayoutDashboard size={14} /> Admin</Link></li>}
             </ul>
           </div>
         </div>
 
         {/* Page content here */}
-        {children}
+        <div className='min-h-screen'>
+          {children}
+        </div>
       </div>
 
       <div className="drawer-side z-20">
