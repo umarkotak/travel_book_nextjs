@@ -10,6 +10,68 @@ import 'react-medium-image-zoom/dist/styles.css'
 import CampingPacketCard from './CampingPacketCard'
 
 export default function PageCampingPacket() {
+  const [campingList, setCampingList] = useState([
+    {
+      slug: "drajih-glamping-camp",
+      main_thumbnail: "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/glamp.png",
+      thumbnails: [
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/bg-contact.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/5.png",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/4.png",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/1.png",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/2.png",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/3.png",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/banner-04.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/banner-03.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.03.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-16.42.46.jpeg",
+      ],
+      name: "Drajih Glamping Camp",
+      description: "Keunikan Glamping untuk menjadi pengalaman baru liburan kamu, pingin coba type drajih glamping nyaman, aman? D'Rajih Nature Camp jawabannya!",
+      specs: [
+        {key: "size", value: "4x3 m2"},
+        {key: "pax", value: "4 Pax"},
+        {key: "toilet", value: "Toilet Bersama"},
+        {key: "park", value: "Parkir"},
+        {key: "bonfire", value: "Area Api Unggun"},
+      ],
+      facilitates: [
+        "kasur 2", "coffee & tea", "breakfast 4 pax", "folding chair 2", "folding table 1", "cooking set", "kompor portable", "grill pan", "hicook gas 2", "stop kontak ", "teko listrik", "payung 2", "rak sepatu", "gantungan baju", "air mineral galon 1", "extrabed 1"
+      ],
+      weekday_price: 500000,
+      weekend_price: 750000,
+      remaining_slot: 5,
+    },
+    {
+      slug: "drajih-dome-tent",
+      main_thumbnail: "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.04-150x150.jpeg",
+      thumbnails: [
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.04-150x150.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/05/dome-150x150.jpg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.23-150x150.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.01-150x150.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-14.34.03-150x150.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-16.42.46-1-150x150.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-15-at-16.42.46-150x150.jpeg",
+        "https://d-rajihnaturecamp.com/wp-content/uploads/2024/05/campgrpund-150x150.jpg",
+      ],
+      name: "Drajih Dome Tent",
+      description: "Tenda Dome dapat menjadi pengalaman baru liburan kamu, pingin coba type dome tent dengan nyaman, aman? D’Rajih Nature Camp jawabannya!",
+      specs: [
+        {key: "size", value: "10 m2"},
+        {key: "pax", value: "4 Pax"},
+        {key: "toilet", value: "Toilet Bersama"},
+        {key: "park", value: "Parkir"},
+        {key: "bonfire", value: "Area Api Unggun"},
+      ],
+      facilitates: [
+        "tenda dome 1", "matras spoon 4", "sleeping bag 4", "lampu tenda 1", "bantal tiup 4", "cooking set 1", "kompor portable 1", "tiang flysheet 1", "flysheet (3x4) 1", "grill pan 1", "gas hicook 2", "folding chair 4", "folding table 1", "colokan terminal 1", "kasur untuk 4 org 1", "payung 1",
+      ],
+      weekday_price: 350000,
+      weekend_price: 450000,
+      remaining_slot: 10,
+    },
+  ])
   const [bookingParams, setBookingParams] = useState({
     date_start_wib: "",
     date_end_wib: "",
@@ -26,8 +88,6 @@ export default function PageCampingPacket() {
   )
 
   function handleSelectDateRange(item) {
-    console.log("DATESELECT", item)
-
     setDateRange([item.selection])
   }
 
@@ -56,7 +116,7 @@ export default function PageCampingPacket() {
       </div>
 
       <div className='flex flex-col gap-4 px-2 mt-6'>
-        {[{}, {}, {}].map((campingPacket, idx) => (
+        {campingList.map((campingPacket, idx) => (
           <CampingPacketCard
             key={idx}
             campingPacket={campingPacket}

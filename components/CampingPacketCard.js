@@ -11,29 +11,6 @@ import 'react-medium-image-zoom/dist/styles.css'
 export default function CampingPacketCard(props) {
   var campingPacket = props.campingPacket
 
-  campingPacket = {
-    slug: "drajih-glamping-camp",
-    main_thumbnail: "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/glamp.png",
-    thumbnails: [
-      "https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/glamp.png",
-    ],
-    name: "Drajih Glamping Camp",
-    description: "Keunikan Glamping untuk menjadi pengalaman baru liburan kamu, pingin coba type drajih glamping nyaman, aman? D'Rajih Nature Camp jawabannya!",
-    specs: [
-      {key: "size", value: "4x3 m2"},
-      {key: "pax", value: "4 Pax"},
-      {key: "toilet", value: "Toilet Bersama"},
-      {key: "park", value: "Parkir"},
-      {key: "bonfire", value: "Area Api Unggun"},
-    ],
-    facilitates: [
-      "kasur 2", "coffee & tea", "breakfast 4 pax", "folding chair 2", "folding table 1", "cooking set", "kompor portable", "grill pan", "hicook gas 2", "stop kontak ", "teko listrik", "payung 2", "rak sepatu", "gantungan baju", "air mineral galon 1", "extrabed 1"
-    ],
-    weekday_price: 500000,
-    weekend_price: 750000,
-    remaining_slot: 5,
-  }
-
   function specsToIcon(specKey) {
     const size = 18
     if (specKey === "size") { return(<Tent size={size} />) }
@@ -70,6 +47,16 @@ export default function CampingPacketCard(props) {
         <div className='w-full'>
           <p className='text-2xl font-bold text-[#8ac16e]'>{campingPacket.name}</p>
 
+          <div className='flex overflow-auto gap-2 mt-2'>
+            {campingPacket.thumbnails.map((oneThumbnail) => (
+              <div className='flex-none' key={oneThumbnail}>
+                <Zoom>
+                  <img src={oneThumbnail} className='h-16 w-16 object-cover rounded-lg overflow-hidden' />
+                </Zoom>
+              </div>
+            ))}
+          </div>
+
           <p className='mt-4 text-sm md:text-md tracking-wide'>{campingPacket.description}</p>
 
           <div className='mt-4 flex items-center flex-wrap gap-4 text-sm md:text-md'>
@@ -96,12 +83,14 @@ export default function CampingPacketCard(props) {
       </div>
       <div className='flex justify-between items-center gap-4'>
         <div>
-          <span>Tersisa: {campingPacket.remaining_slot - (props.bookingParams.packets[campingPacket.slug] || 0)} / {campingPacket.remaining_slot}</span>
+          <span className='text-sm'>
+            Tersisa: {campingPacket.remaining_slot - (props.bookingParams.packets[campingPacket.slug] || 0)} / {campingPacket.remaining_slot}
+          </span>
         </div>
 
         <div className='flex items-center gap-2'>
-          <button className='btn btn-xs btn-outline'><Minus size={12} /></button>
-          <label className="input input-xs input-bordered flex items-center gap-2">
+          {/* <button className='btn btn-xs btn-outline'><Minus size={12} /></button> */}
+          <label className="input input-sm input-bordered flex items-center gap-2">
             <input
               type="number"
               className=""
@@ -110,7 +99,7 @@ export default function CampingPacketCard(props) {
               value={props.bookingParams.packets[campingPacket.slug]}
             />
           </label>
-          <button className='btn btn-xs btn-outline'><Plus size={12} /></button>
+          {/* <button className='btn btn-xs btn-outline'><Plus size={12} /></button> */}
         </div>
       </div>
     </div>
