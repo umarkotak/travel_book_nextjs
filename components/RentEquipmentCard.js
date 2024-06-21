@@ -12,16 +12,6 @@ import utils from '@/commons/Utils'
 export default function RentEquipmentCard(props) {
   var oneEquipment = props.oneEquipment
 
-  function specsToIcon(specKey) {
-    const size = 18
-    if (specKey === "size") { return(<Tent size={size} />) }
-    if (specKey === "pax") { return(<Users size={size} />) }
-    if (specKey === "toilet") { return(<ShowerHead size={size} />) }
-    if (specKey === "park") { return(<ParkingSquare size={size} />) }
-    if (specKey === "bonfire") { return(<FlameKindling size={size} />) }
-    return(<Circle size={size} />)
-  }
-
   function changeQuantity(val) {
     // var finalVal = parseInt(val) || 0
     // if (finalVal < 0) { finalVal = 0 }
@@ -41,28 +31,16 @@ export default function RentEquipmentCard(props) {
       <div className='flex w-full gap-4'>
         <div>
           <Zoom>
-            <img className='w-20 rounded-lg' src={oneEquipment.image} />
+            <img className='w-20 rounded-lg border' src={oneEquipment.image} />
           </Zoom>
         </div>
 
         <div className='w-full'>
           <div className='flex justify-between items-center'>
-            <p className='text-2xl font-bold text-[#8ac16e]'>{oneEquipment.name}</p>
+            <p className='text-2xl text-[#8ac16e]'>{oneEquipment.name}</p>
 
-            <span className='font-bold'>Price: {utils.FormatMoney(oneEquipment.price)}</span>
+            <span className='text-md'>Price: {utils.FormatMoney(oneEquipment.price)}</span>
           </div>
-
-          {/* <div className='flex overflow-auto gap-2 mt-2'>
-            {campingPacket.thumbnails.map((oneThumbnail) => (
-              <div className='flex-none' key={oneThumbnail}>
-                <Zoom>
-                  <img src={oneThumbnail} className='h-16 w-16 object-cover rounded-lg overflow-hidden' />
-                </Zoom>
-              </div>
-            ))}
-          </div> */}
-
-          {/* <p className='mt-4 text-sm md:text-md tracking-wide'>{campingPacket.description}</p> */}
 
           <div className='flex justify-between items-center gap-4'>
             <div>
@@ -72,7 +50,6 @@ export default function RentEquipmentCard(props) {
             </div>
 
             <div className='flex items-center gap-2'>
-              {/* <button className='btn btn-xs btn-outline'><Minus size={12} /></button> */}
               <label className="input input-sm input-bordered flex items-center gap-2">
                 <input
                   type="number"
@@ -82,7 +59,6 @@ export default function RentEquipmentCard(props) {
                   // value={props.bookingParams.packets[campingPacket.slug] || 0}
                 />
               </label>
-              {/* <button className='btn btn-xs btn-outline'><Plus size={12} /></button> */}
             </div>
           </div>
         </div>
