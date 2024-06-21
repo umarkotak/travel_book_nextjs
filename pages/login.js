@@ -20,7 +20,7 @@ export default function Login() {
 
   async function Login() {
     try {
-      const response = await travelBookAPI.Login(loginData)
+      const response = await travelBookAPI.PostLogin(loginData)
       const body = await response.json()
       if (response.status !== 200) {
         alert.error(`Login failed: ${body.error}`)

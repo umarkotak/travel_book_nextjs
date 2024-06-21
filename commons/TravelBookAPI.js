@@ -7,11 +7,11 @@ class TravelBookAPI {
     this.LmsHost = "http://localhost:3050"
   }
 
-  async Register(params) {
+  async PostRegister(params) {
     return this.Post(`/api/v1/u/users/register`, "", params)
   }
 
-  async Login(params) {
+  async PostLogin(params) {
     return this.Post(`/api/v1/u/users/login`, "", params)
   }
 
@@ -19,12 +19,8 @@ class TravelBookAPI {
     return this.Get(`/api/v1/u/users/profile`, authToken, params)
   }
 
-  async GetUserDetail(authToken, params) {
-    return this.Get(`/api/user/${params.user_id}`, authToken, params)
-  }
-
-  async CreateUser(authToken, params) {
-    return this.Post(`/api/user`, authToken, params)
+  async PostCreateBooking(authToken, params) {
+    return this.Post(`/api/v1/u/bookings/create`, authToken, params)
   }
 
   async UpdateUser(authToken, params) {
@@ -33,90 +29,6 @@ class TravelBookAPI {
 
   async DeleteUser(authToken, params) {
     return this.Delete(`/api/user/${params.user_id}`, authToken, params)
-  }
-
-  async GetBillingList(authToken, params) {
-    return this.Get(`/api/billings`, authToken, params)
-  }
-
-  async GetBillingPlanList(authToken, params) {
-    return this.Get(`/api/billing/${params.billing_id}/plans`, authToken, params)
-  }
-
-  async DeleteBilling(authToken, params) {
-    return this.Delete(`/api/billing/${params.billing_id}`, authToken, params)
-  }
-
-  async CreateBilling(authToken, params) {
-    return this.Post(`/api/billing`, authToken, params)
-  }
-
-  async UpdateBilling(authToken, params) {
-    return this.Patch(`/api/billing/${params.billing_id}`, authToken, params)
-  }
-
-  async GetBillingDetail(authToken, params) {
-    return this.Get(`/api/billing/${params.billing_id}`, authToken, params)
-  }
-
-  async CreateBillingPlan(authToken, params) {
-    return this.Post(`/api/billing/${params.billing_id}/plan`, authToken, params)
-  }
-
-  async DeleteBillingPlan(authToken, params) {
-    return this.Delete(`/api/billing_plan/${params.billing_plan_id}`, authToken, params)
-  }
-
-  async BulkAssignBilling(authToken, params) {
-    return this.Post(`/api/billing/${params.billing_id}/assign`, authToken, params)
-  }
-
-  async GetMyBillings(authToken, params) {
-    return this.Get(`/api/billings/me`, authToken, params)
-  }
-
-  async GetAssignedUserList(authToken, params) {
-    return this.Get(`/api/billing/${params.billing_id}/users/assigned`, authToken, params)
-  }
-
-  async CreateOrder(authToken, params) {
-    return this.Post(`/api/order/create`, authToken, params)
-  }
-
-  async PostSendOrderReceipt(authToken, params) {
-    return this.Post(`/api/orders/me/${params.order_number}/send_payment_proof`, authToken, params)
-  }
-
-  async PostCheckMyOrder(authToken, params) {
-    return this.Post(`/api/orders/me/${params.order_number}/check`, authToken, params)
-  }
-
-  async PostAnswerOrderConfirmation(authToken, params) {
-    return this.Post(`/api/order/${params.order_number}/confirmation/${params.state}`, authToken, params)
-  }
-
-  async GetMyOrderList(authToken, params) {
-    return this.Get(`/api/orders/me`, authToken, params)
-  }
-
-  async GetMyOrderDetail(authToken, params) {
-    return this.Get(`/api/orders/me/${params.order_number}`, authToken, params)
-  }
-
-  async GetSearchOrders(authToken, params) {
-    return this.Get(`/api/orders`, authToken, params)
-  }
-
-  async GetSearchContents(authToken, params) {
-    return this.Get(`/api/contents`, authToken, params)
-  }
-
-  async GetContentDetail(authToken, params) {
-    return this.Get(`/api/content/${params.uuid}/detail`, authToken, params)
-  }
-
-  async GetClassList(authToken, params) {
-    return this.Get(`/api/classes`, authToken, params)
   }
 
   async Get(path, authToken, params) {
