@@ -8,8 +8,11 @@ import { DateRange } from 'react-date-range';
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import CampingPacketCard from './CampingPacketCard'
+import utils from '@/commons/Utils'
+import RentEquipmentCard from './RentEquipmentCard'
 
 export default function PageCampingPacket() {
+  const [activeTab, setActiveTab] = useState("camping_packets")
   const [campingList, setCampingList] = useState([
     {
       slug: "drajih-glamping-camp",
@@ -94,6 +97,22 @@ export default function PageCampingPacket() {
       remaining_slot: 1000,
     },
   ])
+  const [rentEquipmentList, setRentEquipmentList] = useState([
+    {
+      id: 1,
+      image: "https://placehold.co/200x200",
+      name: "kursi lipat",
+      price: 30000,
+      remaining_stock: 10,
+    },
+    {
+      id: 2,
+      image: "https://placehold.co/200x200",
+      name: "meja lipat",
+      price: 35000,
+      remaining_stock: 10,
+    },
+  ])
   const [bookingParams, setBookingParams] = useState({
     date_start_wib: "",
     date_end_wib: "",
@@ -114,6 +133,9 @@ export default function PageCampingPacket() {
   }
 
   function proceedBooking() {
+    bookingParams.date_start_wib = utils.FormatDateObjToDateStr(dateRange[0].startDate),
+    bookingParams.date_end_wib = utils.FormatDateObjToDateStr(dateRange[0].endDate),
+
     console.log("BOOKING", bookingParams)
   }
 
@@ -141,11 +163,24 @@ export default function PageCampingPacket() {
         </div>
       </div>
 
-      <div className='flex flex-col gap-4 px-2 mt-6'>
-        {campingList.map((campingPacket, idx) => (
+      <div className='flex px-2 gap-2 mt-6'>
+        <button className='flex-1 btn btn-md btn-outline btn-block' onClick={()=>setActiveTab("camping_packets")}>Paket Camping</button>
+        <button className='flex-1 btn btn-md btn-outline btn-block' onClick={()=>setActiveTab("rent_equipment")}>Sewa Perlengkapan</button>
+      </div>
+
+      <div className='flex flex-col gap-4 px-2 mt-4'>
+        {activeTab === "camping_packets" && campingList.map((campingPacket, idx) => (
           <CampingPacketCard
             key={idx}
             campingPacket={campingPacket}
+            bookingParams={bookingParams}
+            setBookingParams={setBookingParams}
+          />
+        ))}
+        {activeTab === "rent_equipment" && rentEquipmentList.map((oneEquipment, idx) => (
+          <RentEquipmentCard
+            key={idx}
+            oneEquipment={oneEquipment}
             bookingParams={bookingParams}
             setBookingParams={setBookingParams}
           />

@@ -53,6 +53,16 @@ class Utils {
     return `${year}/${month}/${day}`;
   }
 
+  FormatDateObjToDateStr(date) {
+    // Extract year, month, day, hours, and minutes
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Add 1 to month as it's zero-indexed
+    const day = String(date.getDate()).padStart(2, '0');
+
+    // Format the string as YYYY/MM/DD HH:MM
+    return `${year}-${month}-${day}`;
+  }
+
   CommonOnChange(fn, val, e, field) {
     if (e?.target?.value) {
       fn({...val, [field]: e.target.value})
