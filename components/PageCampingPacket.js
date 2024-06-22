@@ -4,7 +4,7 @@ import { useParams, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
-import { DateRange } from 'react-date-range';
+import { DateRange } from 'react-date-range'
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import CampingPacketCard from './CampingPacketCard'
@@ -12,7 +12,7 @@ import utils from '@/commons/Utils'
 import RentEquipmentCard from './RentEquipmentCard'
 import travelBookAPI from '@/commons/TravelBookAPI'
 import { useCookies } from 'react-cookie'
-import { useAlert } from "react-alert";
+import { useAlert } from "react-alert"
 
 export default function PageCampingPacket() {
   const alert = useAlert()
