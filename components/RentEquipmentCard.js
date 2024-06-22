@@ -18,7 +18,7 @@ export default function RentEquipmentCard(props) {
     if (finalVal > oneEquipment.remaining_stock) { finalVal = oneEquipment.remaining_stock }
 
     var tmpRentEquipments = props.bookingParams.rent_equipments
-    tmpRentEquipments[oneEquipment.id] = finalVal
+    tmpRentEquipments[oneEquipment.slug] = finalVal
 
     props.setBookingParams({
       ...props.bookingParams,
@@ -45,7 +45,7 @@ export default function RentEquipmentCard(props) {
           <div className='flex justify-between items-center gap-4'>
             <div>
               <span className='text-sm'>
-                Tersisa: {oneEquipment.remaining_stock - (props.bookingParams.rent_equipments[oneEquipment.id] || 0)} / {oneEquipment.remaining_stock}
+                Tersisa: {oneEquipment.remaining_stock - (props.bookingParams.rent_equipments[oneEquipment.slug] || 0)} / {oneEquipment.remaining_stock}
               </span>
             </div>
 
@@ -56,7 +56,7 @@ export default function RentEquipmentCard(props) {
                   className=""
                   placeholder="Jumlah"
                   onChange={(e) => changeQuantity(e.target.value)}
-                  value={props.bookingParams.rent_equipments[oneEquipment.id] || 0}
+                  value={props.bookingParams.rent_equipments[oneEquipment.slug] || 0}
                 />
               </label>
             </div>

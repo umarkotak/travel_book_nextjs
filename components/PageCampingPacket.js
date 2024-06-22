@@ -104,99 +104,113 @@ export default function PageCampingPacket() {
   ])
   const [rentEquipmentList, setRentEquipmentList] = useState([
     {
-      id: "1",
+      id: 1,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fres.cloudinary.com%2Fruparupa-com%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fl_ace%3Ac5f05d%3A8cb580%2Ff_auto%2Cq_auto%3Aeco%2Fv1503425246%2FProducts%2F10053425_1.jpg&f=1&nofb=1&ipt=59ffdea7efc36533262f02c67deac0ba200ec28b8331c966778e9a72e2190eda&ipo=images",
+      slug: "kursi-lipat",
       name: "kursi lipat",
       price: 30000,
       remaining_stock: 10,
     },
     {
-      id: "2",
+      id: 2,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.0dmZlUejaxvIyimMclGGBgHaHa%26pid%3DApi&f=1&ipt=2ce6f06e9844966e18d8de7c04557f56d6b05e7faef0c619a95f2934b28c7525&ipo=images",
+      slug: "meja-lipat",
       name: "meja lipat",
       price: 35000,
       remaining_stock: 10,
     },
     {
-      id: "3",
+      id: 3,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.ju331gJyJhagyChPi773BQHaHa%26pid%3DApi&f=1&ipt=926929756633b4bcbfff585835492dc9e756c3fd1f9a8df1df7c2ef7597f4e2d&ipo=images",
+      slug: "flysheet-3x4",
       name: "flysheet 3x4",
       price: 35000,
       remaining_stock: 10,
     },
     {
-      id: "4",
+      id: 4,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.68ds9_t97lTqYGqPRti5AAHaHa%26pid%3DApi&f=1&ipt=42515c235f83b312a214111248022e0e9ab3ffb117efa7745bb35f454c49a6c0&ipo=images",
+      slug: "tiang-flysheet",
       name: "tiang flysheet",
       price: 25000,
       remaining_stock: 10,
     },
     {
-      id: "5",
+      id: 5,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.mZaa3IwEO02TQAVNZSJqSQHaHa%26pid%3DApi&f=1&ipt=ea95dbf9554635a7da83427e07251db9db8c5ac5fabb1b61755fea94dab7e9a3&ipo=images",
+      slug: "sleeping-bag",
       name: "sleeping bag",
       price: 20000,
       remaining_stock: 10,
     },
     {
-      id: "6",
+      id: 6,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.RNhZCkZCPA-75zwUuwbkywHaHa%26pid%3DApi&f=1&ipt=3de5dff0a83ae4bae05d7050f78d3eaad2d2e71cd3b71a771b68d996e8bdea8d&ipo=images",
+      slug: "matras-spoon",
       name: "matras spoon",
       price: 10000,
       remaining_stock: 10,
     },
     {
-      id: "7",
+      id: 7,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.VlVQsJ5ammImdsnmMlEPiAHaHa%26pid%3DApi&f=1&ipt=8e1b01a504c157eccd22f1ad95b4284499b3ce83063e7825f809c5ec428617ac&ipo=images",
+      slug: "cooking-set-308",
       name: "cooking set 308",
       price: 25000,
       remaining_stock: 10,
     },
     {
-      id: "8",
+      id: 8,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.JKFExINM2CrDz2vlOdyAlwHaHa%26pid%3DApi&f=1&ipt=23b3e9a8dd15cda7ad041afded305c8ed0dfc66158a6b884b2920640d1da7cf3&ipo=images",
+      slug: "kompor",
       name: "kompor",
       price: 35000,
       remaining_stock: 10,
     },
     {
-      id: "9",
+      id: 9,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.RiBXojyJQZem4OwURHgybgHaHa%26pid%3DApi&f=1&ipt=76795db97a487bbf00926b44c999ab0b6ec9feb3ebfa0cf38af233ee93e42e0e&ipo=images",
+      slug: "galon",
       name: "galon",
       price: 30000,
       remaining_stock: 10,
     },
     {
-      id: "10",
+      id: 10,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.9uTgq5xuzZ1Tyk-vcwoFBAHaHa%26pid%3DApi&f=1&ipt=657daa985adad5a6fe43e3e68ed004ac413f02aa743c0112e6ebe4b9f7f868ef&ipo=images",
+      slug: "colokan-terminal",
       name: "colokan terminal",
       price: 50000,
       remaining_stock: 10,
     },
     {
-      id: "11",
+      id: 11,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.QjRlNddJTyw5mIngzTILhQHaHa%26pid%3DApi&f=1&ipt=876a22d68b7d3434ef645ec866412212370c2553f5174ddf8283b77ceec54c52&ipo=images",
+      slug: "gas-hicook",
       name: "gas hicook",
       price: 20000,
       remaining_stock: 10,
     },
     {
-      id: "12",
+      id: 12,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.SoOa4i57CPtd8aIaPAdx2gHaE8%26pid%3DApi&f=1&ipt=fc43351569591061262030ef874b73a8fbd21f696dda006da5555e4b0b45dd3a&ipo=images",
+      slug: "extrabed",
       name: "extrabed",
       price: 50000,
       remaining_stock: 10,
     },
     {
-      id: "13",
+      id: 13,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.PORMx0Z9S0V7qOTQofOi3QHaE8%26pid%3DApi&f=1&ipt=f85f0021be06ac28262605dc3ee066fc0317ebe171cfc8c0d6f3176cd2260844&ipo=images",
+      slug: "kayu-bakar",
       name: "kayu bakar",
       price: 25000,
       remaining_stock: 10,
     },
     {
-      id: "14",
+      id: 14,
       image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.E2xOqIulAbiyA52aXcbGawHaHa%26pid%3DApi&f=1&ipt=36fbf15b752666ac0a52a0c6eaeeb2e5084cda9a120adbd9877595acb9c7ebd2&ipo=images",
+      slug: "payung",
       name: "payung",
       price: 15000,
       remaining_stock: 10,
@@ -238,7 +252,7 @@ export default function PageCampingPacket() {
 
       alert.success("Create booking success")
 
-      // router.push('/d/my_booking')
+      router.push('/d/my_booking')
     } catch (e) {
 
       alert.error(`Create booking failed: ${e.message}`)
@@ -329,18 +343,18 @@ export default function PageCampingPacket() {
               <p className='flex items-center'><Axe size={16} className='mr-2' /> Sewa Perlengkapan:</p>
 
               <div className='mt-2'>
-                {Object.keys(bookingParams.rent_equipments).filter((id) => bookingParams.rent_equipments[id] > 0).map((id) => (
-                  <div className='flex justify-between items-center text-md mb-2'>
+                {Object.keys(bookingParams.rent_equipments).filter((slug) => bookingParams.rent_equipments[slug] > 0).map((slug) => (
+                  <div key={slug} className='flex justify-between items-center text-md mb-2'>
                     <div className='flex items-center'>
                       <Zoom>
                         <img
                           className='h-12 w-12 object-cover rounded-lg overflow-hidden mr-2 border'
-                          src={rentEquipmentList.filter((obj) => obj.id === id)[0].image}
+                          src={rentEquipmentList.filter((obj) => obj.slug === slug)[0].image}
                         />
                       </Zoom>
-                      <span>{rentEquipmentList.filter((obj) => obj.id === id)[0].name}</span>
+                      <span>{rentEquipmentList.filter((obj) => obj.slug === slug)[0].name}</span>
                     </div>
-                    <span>{bookingParams.rent_equipments[id]}x</span>
+                    <span>{bookingParams.rent_equipments[slug]}x</span>
                   </div>
                 ))}
               </div>
