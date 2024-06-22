@@ -19,6 +19,14 @@ class TravelBookAPI {
     return this.Get(`/api/v1/u/users/profile`, authToken, params)
   }
 
+  async GetCampingPackets(authToken, params) {
+    return this.Get(`/api/v1/u/camping_packets`, authToken, params)
+  }
+
+  async GetCampingItems(authToken, params) {
+    return this.Get(`/api/v1/u/camping_items`, authToken, params)
+  }
+
   async PostCreateBooking(authToken, params) {
     return this.Post(`/api/v1/u/bookings/create`, authToken, params)
   }
