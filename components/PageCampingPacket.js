@@ -13,9 +13,11 @@ import RentEquipmentCard from './RentEquipmentCard'
 import travelBookAPI from '@/commons/TravelBookAPI'
 import { useCookies } from 'react-cookie'
 import { useAlert } from "react-alert"
+import { useRouter } from "next/router";
 
 export default function PageCampingPacket() {
   const alert = useAlert()
+  const router = useRouter()
   const [cookies, setCookies] = useCookies(['tvb'])
   const [activeTab, setActiveTab] = useState("camping_packets")
   const [campingList, setCampingList] = useState([])

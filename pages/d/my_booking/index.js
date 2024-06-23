@@ -43,7 +43,7 @@ export default function MyBooking() {
       <div className='text-xl px-2'>
         <span className='flex'>Daftar Booking</span>
       </div>
-      
+
       <div className='flex flex-col gap-4 px-2 mt-4'>
         {bookingList.map((oneBooking) => (
           <div key={oneBooking.number} className='border rounded-lg flex flex-col gap-4 w-full shadow-md p-4'>
@@ -53,7 +53,7 @@ export default function MyBooking() {
                   <Tent size={18} />
                   <span>Paket Camping</span>
                 </div>
-                <span className='px-2 py-1 bg-[#dcecd3]'>{oneBooking.status}</span>
+                <span className='px-2 py-1 bg-[#dcecd3]'>{oneBooking.human_status}</span>
               </div>
               <div className='text-xs'>
                 <span>No:</span>

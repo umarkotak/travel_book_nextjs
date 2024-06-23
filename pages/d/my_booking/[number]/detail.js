@@ -15,67 +15,90 @@ import { useAlert } from "react-alert"
 export default function MyBooking() {
   const alert = useAlert()
   const [cookies, setCookies] = useCookies(['tvb'])
-  const [bookingList, setBookingList] = useState([])
+  const [bookingDetail, setBookingDetail] = useState({
+    booking_details: [],
+  })
+  const pathParams = useParams()
 
   useEffect(() => {
-    GetMyBookingList()
-  }, [])
+    GetMyBookingDetail()
+  }, [pathParams])
 
-  async function GetMyBookingList() {
+  async function GetMyBookingDetail() {
+    if (!pathParams || !pathParams.number || pathParams.number === "") { return }
+
     try {
-      const response = await travelBookAPI.GetMyBookingList(cookies.tvb_at, {})
+      const response = await travelBookAPI.GetMyBookingDetail(cookies.tvb_at, {
+        booking_number: pathParams.number,
+      })
       const body = await response.json()
       if (response.status !== 200) {
-        alert.error(`Get booking list failed: ${body.error}`)
+        alert.error(`Get booking detail failed: ${body.error}`)
         return
       }
 
-      setBookingList(body.data)
+      setBookingDetail(body.data)
     } catch (e) {
 
-      alert.error(`Get booking list failed: ${e.message}`)
+      alert.error(`Get booking detail failed: ${e.message}`)
       console.error(e)
     }
   }
 
   return (
-    <div className='container max-w-3xl min-h-screen mx-auto py-6'>
+    <div className='container max-w-3xl min-h-screen mx-auto py-4'>
       <div className='flex flex-col gap-4 px-2 mt-4'>
-        {bookingList.map((oneBooking) => (
-          <div key={oneBooking.number} className='border rounded-lg flex flex-col gap-4 w-full shadow-md p-4'>
-            <div className='flex flex-col gap-4'>
-              <div className='flex text-xs md:text-md items-center gap-2 md:gap-4'>
+        <div key={bookingDetail.number} className='border rounded-lg flex flex-col gap-4 w-full shadow-md p-4'>
+          <div className='flex flex-col gap-4'>
+            <div className='flex text-xs md:text-md items-center justify-between'>
+              <div className='flex items-center gap-2'>
                 <Tent size={18} />
                 <span>Paket Camping</span>
-                <span>{utils.FormatDate(oneBooking.started_at)} - {utils.FormatDate(oneBooking.ended_at)}</span>
-                <span>({oneBooking.num_nights} nights)</span>
               </div>
-              <div className='text-xs'>
-                <span>No:</span>
-                <span className='ml-2'>{oneBooking.number}</span>
-              </div>
-              <div className='text-xs'>
-                <span className='px-1 bg-[#dcecd3]'>{oneBooking.status}</span>
-              </div>
-              <div className='flex items-center justify-between'>
-                <div className='flex items-center gap-2'>
-                  <img src={"https://d-rajihnaturecamp.com/wp-content/uploads/2024/06/glamp.png"} className='h-20 w-20 rounded-lg' />
-                  <div className='flex flex-col'>
-                    <span className='text-xl'>Temporary stuff here</span>
-                    <span className='text-xs'>Another stuff here</span>
+              <span className='px-2 py-1 bg-[#dcecd3]'>{bookingDetail.human_status}</span>
+            </div>
+            <div className='text-xs'>
+              <span>No:</span>
+              <span className='ml-2'>{bookingDetail.number}</span>
+            </div>
+            <div className='text-xs'>
+              ({bookingDetail.num_nights} nights) | {utils.FormatDate(bookingDetail.started_at)} - {utils.FormatDate(bookingDetail.ended_at)}
+            </div>
+            <div className='flex flex-col gap-2'>
+              {bookingDetail.booking_details.map((oneBookingDetail) => (
+                <div key={oneBookingDetail.id} className='flex items-center justify-between'>
+                  <div className='flex items-center gap-2'>
+                    <img src={oneBookingDetail.image} className='h-12 w-12 rounded-lg' />
+                    <div className='flex flex-col'>
+                      <span className='text-sm'>{oneBookingDetail.quantity}x | {oneBookingDetail.name}</span>
+                      <span className='text-xs flex items-center'>
+                        <span>
+                          weekday: {utils.FormatMoney(oneBookingDetail.weekday_price)} x {oneBookingDetail.weekday_quantity}
+                        </span>
+                        <span className='mx-1'>|</span>
+                        <span>
+                          weekend: {utils.FormatMoney(oneBookingDetail.weekend_price)} x {oneBookingDetail.weekend_quantity}
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <div className='flex flex-col gap-1 text-right'>
+                    <span className='text-xs'>Total Harga</span>
+                    <span className='text-sm'>{utils.FormatMoney(oneBookingDetail.total_price)}</span>
                   </div>
                 </div>
-                <div className='flex flex-col gap-1'>
-                  <span className='text-xs'>Total Harga</span>
-                  <span>{utils.FormatMoney(oneBooking.grand_total_price)}</span>
+              ))}
+            </div>
+            <div className='flex justify-end'>
+              <div className='flex flex-col text-right'>
+                <div className='flex gap-4'>
+                  <span>Total Harga</span>
+                  <span>{utils.FormatMoney(bookingDetail.total_price)}</span>
                 </div>
-              </div>
-              <div className='flex items-center justify-end'>
-                <Link href={`/d/my_booking/`} className='font-bold text-[#355524] flex items-center gap-1'><EyeIcon size={18} /> Lihat Detail</Link>
               </div>
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   )
