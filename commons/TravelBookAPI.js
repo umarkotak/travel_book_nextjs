@@ -37,12 +37,20 @@ class TravelBookAPI {
     return this.Get(`/api/v1/a/bookings`, authToken, params)
   }
 
+  async GetAdminBookingDetail(authToken, params) {
+    return this.Get(`/api/v1/a/bookings/${params.booking_number}`, authToken, params)
+  }
+
   async GetMyBookingDetail(authToken, params) {
     return this.Get(`/api/v1/u/bookings/${params.booking_number}`, authToken, params)
   }
 
   async PostCreateBooking(authToken, params) {
     return this.Post(`/api/v1/u/bookings/create`, authToken, params)
+  }
+
+  async PostBookingAction(authToken, params) {
+    return this.Post(`/api/v1/a/bookings/${params.booking_number}/action/${params.action}`, authToken, params)
   }
 
   async UpdateUser(authToken, params) {

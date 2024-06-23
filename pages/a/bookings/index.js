@@ -1,4 +1,4 @@
-import { Axe, Check, EyeIcon, FlameKindling, Minus, ParkingSquare, Plus, Receipt, Search, ShoppingCart, ShowerHead, Tent, Users } from 'lucide-react'
+import { Axe, Check, EyeIcon, Filter, FlameKindling, Minus, ParkingSquare, Plus, Receipt, Search, ShoppingCart, ShowerHead, Tent, Users } from 'lucide-react'
 import Link from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -40,8 +40,21 @@ export default function BookingList() {
 
   return (
     <div className='container max-w-3xl min-h-screen mx-auto py-4'>
-      <div className='text-xl px-2'>
-        <span className='flex'>Manage Booking</span>
+      <div className='px-2 flex items-center justify-between'>
+        <span className='text-xl flex-none'>Manage Booking</span>
+        <div className="drawer drawer-end">
+          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content">
+            <label htmlFor="my-drawer-4" className="flex justify-end">
+              <span className='flex gap-2 items-center btn btn-xs btn-outline'><Filter size={14} /> Filter</span>
+            </label>
+          </div>
+          <div className="drawer-side z-30">
+            <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+            <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className='flex flex-col gap-4 px-2 mt-4'>

@@ -65,25 +65,29 @@ export default function MyBooking() {
               ({bookingDetail.num_nights} nights) | {utils.FormatDate(bookingDetail.started_at)} - {utils.FormatDate(bookingDetail.ended_at)}
             </div>
             <div className='flex flex-col gap-2'>
+              <span>Detail</span>
+
               {bookingDetail.booking_details.map((oneBookingDetail) => (
-                <div key={oneBookingDetail.id} className='flex items-center justify-between'>
+                <div key={oneBookingDetail.id} className='flex items-center justify-between border-b pb-2'>
                   <div className='flex items-center gap-2'>
-                    <img src={oneBookingDetail.image} className='h-12 w-12 rounded-lg' />
+                    <img src={oneBookingDetail.image} className='h-12 w-12 rounded-lg border' />
                     <div className='flex flex-col'>
                       <span className='text-sm'>{oneBookingDetail.quantity}x | {oneBookingDetail.name}</span>
                       <span className='text-xs flex items-center'>
-                        <span>
+                        {oneBookingDetail.weekday_quantity > 0 && <span>
                           weekday: {utils.FormatMoney(oneBookingDetail.weekday_price)} x {oneBookingDetail.weekday_quantity}
-                        </span>
+                        </span>}
                         <span className='mx-1'>|</span>
-                        <span>
+                        {oneBookingDetail.item_type === "camping_packet" && oneBookingDetail.weekend_quantity > 0 && <span>
                           weekend: {utils.FormatMoney(oneBookingDetail.weekend_price)} x {oneBookingDetail.weekend_quantity}
-                        </span>
+                        </span>}
+                        {oneBookingDetail.item_type === "camping_item" && <span>
+                          price: {utils.FormatMoney(oneBookingDetail.weekend_price)}
+                        </span>}
                       </span>
                     </div>
                   </div>
                   <div className='flex flex-col gap-1 text-right'>
-                    <span className='text-xs'>Total Harga</span>
                     <span className='text-sm'>{utils.FormatMoney(oneBookingDetail.total_price)}</span>
                   </div>
                 </div>
