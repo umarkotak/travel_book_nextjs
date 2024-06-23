@@ -19,14 +19,12 @@ export default function UserLayout({ children }) {
       router.push("/login")
     }
 
-    if (cookies.tvb_rl === "user") {
-      setLoggedIn(true)
-      setRole("user")
+    if (cookies.tvb_rl !== "user") {
+      router.push("/login")
     }
-    if (cookies.tvb_rl === "admin") {
-      setLoggedIn(true)
-      setRole("admin")
-    }
+
+    setLoggedIn(true)
+    setRole(cookies.tvb_rl)
   }, [])
 
   function Logout(e) {

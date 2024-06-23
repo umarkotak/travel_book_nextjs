@@ -71,12 +71,12 @@ export default function LandingLayout({ children }) {
           {/* Sidebar content here */}
           <li><Link href="/camping_packets"><Tent size={14} /> Paket Camping</Link></li>
           <li><Link href="/about_us"><Info size={14} /> Tentang Kami</Link></li>
-          <li><Link href="/gallery"><LogIn size={14} /> Galeri</Link></li>
+          <li><Link href="/gallery"><ImagesIcon size={14} /> Galeri</Link></li>
           <li><Link href="/contact_us"><Handshake size={14} /> Kontak Kami</Link></li>
-          <li><a href="https://wa.me/+6212341234" target="_blank" className='border text-green-800 border-green-800'><Phone size={14} /> Tanya Admin</a></li>
+          <li><a href="https://wa.me/+6212341234" target="_blank" className='border'><Phone size={14} /> Tanya Admin</a></li>
           {!loggedIn && <li><Link href="/login"><LogIn size={14} /> Login</Link></li>}
-          {loggedIn && role==="user" && <li><Link href="/d/dashboard"><LayoutDashboard size={14} /> Dashboard</Link></li>}
-          {loggedIn && role==="admin" && <li><Link href="/a/dashboard"><LayoutDashboard size={14} /> Admin</Link></li>}
+          {loggedIn && role==="user" && <li><Link href="/d/home"><LayoutDashboard size={14} /> Dashboard</Link></li>}
+          {loggedIn && role==="admin" && <li><Link href="/a/home"><LayoutDashboard size={14} /> Admin</Link></li>}
         </ul>
       </div>
     </div>

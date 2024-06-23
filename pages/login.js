@@ -15,7 +15,11 @@ export default function Login() {
     password: "",
   })
   const [registerData, setRegisterData] = useState({
-
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    password_confirmation: "",
   })
 
   async function Login() {
@@ -33,7 +37,11 @@ export default function Login() {
       setCookies("tvb_nm", body.data.name, {path: "/"})
       setCookies("tvb_em", body.data.email, {path: "/"})
 
-      router.push('/d/home')
+      if (body.data.role === "user") {
+        router.push('/d/home')
+      } else if (body.data.role === "admin") {
+        router.push('/a/home')
+      }
     } catch (e) {
 
       alert.error(`Login failed: ${e.message}`)
@@ -42,7 +50,21 @@ export default function Login() {
   }
 
   async function Register() {
+    try {
+      const response = await travelBookAPI.PostRegister(registerData)
+      const body = await response.json()
+      if (response.status !== 200) {
+        alert.error(`Register failed: ${body.error}`)
+        return
+      }
 
+      alert.success("Register success, please login!")
+
+    } catch (e) {
+
+      alert.error(`Register failed: ${e.message}`)
+      console.error(e)
+    }
   }
 
   return (
@@ -79,31 +101,31 @@ export default function Login() {
 
               <label className="input input-sm input-bordered flex items-center gap-2 mt-4">
                 <User2 size={16} />
-                <input type="text" className="grow" placeholder="Name" />
+                <input type="text" className="grow" placeholder="Name" value={registerData.name} onChange={(e)=>setRegisterData({...registerData, "name": e.target.value})} />
               </label>
 
               <label className="input input-sm input-bordered flex items-center gap-2 mt-4">
                 <Mail size={16} />
-                <input type="text" className="grow" placeholder="Email" />
+                <input type="text" className="grow" placeholder="Email" value={registerData.email} onChange={(e)=>setRegisterData({...registerData, "email": e.target.value})} />
               </label>
 
               <label className="input input-sm input-bordered flex items-center gap-2 mt-4">
                 <Phone size={16} />
-                <input type="text" className="grow" placeholder="Phone" />
+                <input type="text" className="grow" placeholder="Phone" value={registerData.phone} onChange={(e)=>setRegisterData({...registerData, "phone": e.target.value})} />
               </label>
 
               <label className="input input-sm input-bordered flex items-center gap-2 mt-4">
                 <Lock size={16} />
-                <input type="password" className="grow" placeholder="Password" />
+                <input type="password" className="grow" placeholder="Password" value={registerData.password} onChange={(e)=>setRegisterData({...registerData, "password": e.target.value})} />
               </label>
 
               <label className="input input-sm input-bordered flex items-center gap-2 mt-4">
                 <LockKeyhole size={16} />
-                <input type="password" className="grow" placeholder="Password Confirmation" />
+                <input type="password" className="grow" placeholder="Password Confirmation" value={registerData.password_confirmation} onChange={(e)=>setRegisterData({...registerData, "password_confirmation": e.target.value})} />
               </label>
 
               <div className="flex justify-end items-center mt-4">
-                <button className="btn btn-outline btn-sm">
+                <button className="btn btn-outline btn-sm" onClick={()=>Register()}>
                   Register
                 </button>
               </div>

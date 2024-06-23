@@ -1,10 +1,12 @@
 class TravelBookAPI {
   constructor() {
-    if (typeof(window) !== "undefined" && window.location.protocol === "https:") {
-    } else {
-    }
-
     this.LmsHost = "http://localhost:3050"
+
+    if (typeof(window) !== "undefined" && window.location.protocol === "https:") {
+      this.LmsHost = "https://5bt69x77-3050.asse.devtunnels.ms"
+    } else {
+      this.LmsHost = "http://localhost:3050"
+    }
   }
 
   async PostRegister(params) {
@@ -29,6 +31,10 @@ class TravelBookAPI {
 
   async GetMyBookingList(authToken, params) {
     return this.Get(`/api/v1/u/bookings`, authToken, params)
+  }
+
+  async GetAdminBookingList(authToken, params) {
+    return this.Get(`/api/v1/a/bookings`, authToken, params)
   }
 
   async GetMyBookingDetail(authToken, params) {
