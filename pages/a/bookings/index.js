@@ -1,4 +1,4 @@
-import { Axe, Check, EyeIcon, Filter, FlameKindling, Minus, ParkingSquare, Plus, Receipt, Search, ShoppingCart, ShowerHead, Tent, Users } from 'lucide-react'
+import { Axe, Check, EyeIcon, Filter, FlameKindling, Minus, ParkingSquare, Plus, Receipt, ReceiptText, Search, ShoppingCart, ShowerHead, Tent, Users } from 'lucide-react'
 import Link from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -41,7 +41,7 @@ export default function BookingList() {
   return (
     <div className='container max-w-3xl min-h-screen mx-auto py-4'>
       <div className='px-2 flex items-center justify-between'>
-        <span className='text-xl flex-none'>Manage Booking</span>
+        <span className='text-xl flex-none flex gap-2 items-center'><ReceiptText /> Manage Booking</span>
         <div className="drawer drawer-end">
           <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">

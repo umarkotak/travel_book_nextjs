@@ -37,6 +37,10 @@ class TravelBookAPI {
     return this.Get(`/api/v1/a/bookings`, authToken, params)
   }
 
+  async GetAdminBookingSummary(authToken, params) {
+    return this.Get(`/api/v1/a/bookings/summary`, authToken, params)
+  }
+
   async GetAdminBookingDetail(authToken, params) {
     return this.Get(`/api/v1/a/bookings/${params.booking_number}`, authToken, params)
   }
