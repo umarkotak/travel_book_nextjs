@@ -47,12 +47,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='mt-4 px-2 grid grid-cols-4 gap-2'>
+      <div className='mt-4 px-2 grid grid-cols-4 gap-4'>
         {bookingSummary.map((oneBookingSummary) => (
           <div className="rounded-lg w-full flex flex-col p-2 shadow bg-green-100">
-            <p className="text-center">{oneBookingSummary["human_status"]}</p>
-            <p className="mt-4 font-bold text-2xl text-center">{oneBookingSummary["booking_count"]}</p>
-            <Link href={`/a/bookings?status=${oneBookingSummary["status"]}`} className="mt-4 text-center btn btn-outline btn-sm">See Detail</Link>
+            <p className="text-center text-sm">{oneBookingSummary["human_status"]}</p>
+            <p className="mt-4 font-bold text-3xl text-center">{oneBookingSummary["booking_count"]}</p>
+            <Link href={`/a/bookings?status=${oneBookingSummary["status"]}`} className="mt-4 text-center btn btn-outline btn-xs">See Detail</Link>
           </div>
         ))}
       </div>
